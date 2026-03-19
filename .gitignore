@@ -20,3 +20,10 @@ mlruns/
 node_modules/
 build/
 dist/
+
+# .gitignore
+# Abaikan semua file di dalam folder data
+data/**/*
+
+# KECUALI file .gitkeep biar foldernya tetep keliatan di GitHub
+!data/.gitkeep
