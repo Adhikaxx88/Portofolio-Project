@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# ML/Data
+data/
+mlruns/
+*.pkl
+*.h5
+
+# OS & IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Node (Frontend)
+node_modules/
+build/
+dist/
