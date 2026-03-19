@@ -1,0 +1,38 @@
+PORTOFOLIO_ADHIKA/
+├── .env                    # Kunci rahasia (DB, API Keys, Kafka, MLflow)
+├── .gitignore              # Proteksi agar data rahasia tidak bocor ke GitHub
+├── docker-compose.yml      # Konduktor utama untuk menyalakan semua container
+│
+├── frontend/               # React.js (Page 1: Gallery, Page 2: Phishing, Page 3: Chatbot)
+│   ├── src/
+│   │   ├── pages/          # Navigasi antar 3 halaman utama
+│   │   └── components/     # UI reusable (Navbar, Cards, SHAP Charts)
+│   ├── Dockerfile
+│   └── package.json
+│
+├── backend/                # FastAPI (Otak Prediksi & Chatbot)
+│   ├── app/
+│   │   ├── api/            # Route /predict (Phishing) & /chat (LangChain)
+│   │   ├── services/       # Logic XAI (SHAP) & Integrasi Redis/Kafka
+│   │   ├── db/             # Koneksi Postgres & SQLAlchemy Models
+│   │   └── core/           # Config loader dari .env
+│   ├── tests/              # Folder Pytest & Unittest (@patch)
+│   ├── Dockerfile
+│   └── main.py
+│
+├── ml_pipeline/            # MLOps & Orchestration
+│   ├── notebooks/          # EDA Phishing URL & Research Model
+│   ├── scripts/            # train.py (MLflow Tracking) & evaluate.py
+│   └── dags/               # Airflow DAGs (Jadwal Retraining Bulanan)
+│
+├── infrastructure/         # DevOps, Monitoring, & Networking
+│   ├── prometheus/         # prometheus.yml (Scraping metrics)
+│   ├── grafana/            # provisioning/dashboards (Auto-load dashboard)
+│   └── nginx/              # nginx.conf (Reverse Proxy & SSL)
+│
+└── data/                   # PENTING: Mount Volume (Data Persistency)
+    ├── postgres/           # Database asli biar gak hilang pas restart
+    ├── redis/              # Cache data Feature Store
+    ├── kafka/              # Antrean pesan (Topic logs)
+    ├── mlflow/             # Local artifact store (File .pkl model)
+    └── airflow/            # Logs & Metadata Airflow
